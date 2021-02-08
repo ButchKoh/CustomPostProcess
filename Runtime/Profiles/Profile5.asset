@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1529489448966763753
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e51e17af50a174fb2dc15ccbf0b38d, type: 3}
+  m_Name: PP_ReplaceWithTexture
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  col1:
+    overrideState: 1
+    value: {r: 0.38823533, g: 0.64705884, b: 0, a: 1}
+  tolerance1:
+    overrideState: 1
+    value: 0.08
+  col2:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 1}
+  tolerance2:
+    overrideState: 1
+    value: 0
+  col3:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 1}
+  tolerance3:
+    overrideState: 1
+    value: 0
+  scaleX:
+    overrideState: 0
+    value: 1
+  scaleY:
+    overrideState: 0
+    value: 1
+  _Tex1:
+    overrideState: 1
+    value: {fileID: 2800000, guid: 83eb7ebfb89969941b53504da3742066, type: 3}
+    defaultState: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Name: Profile5
+  m_EditorClassIdentifier: 
+  settings:
+  - {fileID: 114384517896688720}
+  - {fileID: 114360739487237746}
+  - {fileID: -1529489448966763753}
+--- !u!114 &114360739487237746
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29997521ce79324bab38b6d6ba951e9, type: 3}
+  m_Name: PP_PixelAndColorDepth
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  _PixelX:
+    overrideState: 1
+    value: 240
+  _PixelY:
+    overrideState: 1
+    value: 160
+  _Rbit:
+    overrideState: 1
+    value: 3
+  _Gbit:
+    overrideState: 1
+    value: 3
+  _Bbit:
+    overrideState: 1
+    value: 3
+--- !u!114 &114384517896688720
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0908bb272f05ce48ab20398cccf0460, type: 3}
+  m_Name: PP_HSV_ST
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  _HueScale:
+    overrideState: 1
+    value: 1
+  _HueOffset:
+    overrideState: 1
+    value: 0.67
+  _SaturationScale:
+    overrideState: 1
+    value: 1
+  _SaturationOffset:
+    overrideState: 1
+    value: 0
+  _ValueScale:
+    overrideState: 1
+    value: 0.74
+  _ValueOffset:
+    overrideState: 1
+    value: 0.18

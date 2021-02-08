@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Name: Profile3
+  m_EditorClassIdentifier: 
+  settings:
+  - {fileID: 114036760974602004}
+--- !u!114 &114036760974602004
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab29005bbf3d6d041b549475d49c82b3, type: 3}
+  m_Name: PP_Noise
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  _TimeScale:
+    overrideState: 0
+    value: 2.5
+  _UVHorizontalSlipOn:
+    overrideState: 0
+    value: 1
+  _SlippingPosOffset:
+    overrideState: 0
+    value: 0
+  _SlippingFrequency:
+    overrideState: 0
+    value: 30
+  _SlippingLevel:
+    overrideState: 1
+    value: 0.027
+  _SlippingWidth:
+    overrideState: 1
+    value: 0.5
+  _NoiseParam1:
+    overrideState: 0
+    value: 500
+  _NoiseIntensity:
+    overrideState: 0
+    value: 1
+  _VerticalSlipping:
+    overrideState: 1
+    value: 0.17
+  _UVNoiseOn:
+    overrideState: 0
+    value: 1
+  _NoiseFrequency:
+    overrideState: 0
+    value: 100
+  _NoiseDetail:
+    overrideState: 0
+    value: 2
+  _NoiseSpeed:
+    overrideState: 1
+    value: 50
+  _NoiseThreshold:
+    overrideState: 0
+    value: 0.3
+  _NoiseWidth:
+    overrideState: 0
+    value: 0.075
+  _StretchOn:
+    overrideState: 0
+    value: 1
+  _StretchIntensity:
+    overrideState: 0
+    value: 0.5
+  _StretchLevel:
+    overrideState: 0
+    value: 8
+  _StretchThreshold:
+    overrideState: 1
+    value: 0.2
+  _NoiseParam4:
+    overrideState: 0
+    value: 600
+  _SeparationOn:
+    overrideState: 1
+    value: 1
+  _RGBSeparationWidth:
+    overrideState: 0
+    value: 0.015
+  _RGBSeparationThreshold:
+    overrideState: 0
+    value: 0.4
+  _NoiseParam5:
+    overrideState: 0
+    value: 30
+  _MosicOn:
+    overrideState: 0
+    value: 1
+  _MosicLevelX:
+    overrideState: 0
+    value: 128
+  _MosicLevelY:
+    overrideState: 0
+    value: 128
+  _MosicThreshold:
+    overrideState: 0
+    value: 0.15
+  _WaveOn:
+    overrideState: 1
+    value: 1
+  _WaveSpeed:
+    overrideState: 1
+    value: 4
+  _LineWidth:
+    overrideState: 1
+    value: 8
+  _LineIntensity:
+    overrideState: 1
+    value: 0.3
+  _SimpleNoiseOn:
+    overrideState: 1
+    value: 1
+  _SimpleNoiseLevel:
+    overrideState: 1
+    value: 0.73
+  _SimpleNoiseScale:
+    overrideState: 0
+    value: 250
+  _NoiseParam7:
+    overrideState: 0
+    value: 500
+  _PixelizeOn:
+    overrideState: 1
+    value: 1
+  _PixelNum:
+    overrideState: 1
+    value: 200
+  _PixelSize:
+    overrideState: 1
+    value: 0.75
+  _PixelWidth:
+    overrideState: 1
+    value: 0.85

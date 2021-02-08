@@ -1,0 +1,20 @@
+{
+    "name": "ButchKoh.CustomPP.Scene",
+    "references": [
+        "GUID:c81b90fdfc48b7f4caf45595d2373e09",
+        "GUID:beafaa0acf239164aa8bcec9f46708a1",
+        "GUID:e6472abe1ba572c49a83c126ca67afdc",
+        "GUID:82702f547a1a0cd4ebd8689a21269574",
+        "GUID:5ca1691ef558f0c41b132499a0b83326",
+        "GUID:6f98a0c69f5d18c4c88ef5d7466ec4a5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
