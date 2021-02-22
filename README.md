@@ -26,9 +26,12 @@ Root / Runtime / Profiles folder contains the preset profiles for Post-process V
 
 ## エフェクトの種類/Effects
 1. ノイズをかける<br>
-2. モノトーン+所定範囲の色相の色<br>
-3. HSVをいじる<br>
-4. 輪郭抽出<br>
-5. 画像を粗くする<br>
-6. 所定の範囲の色を画像に置き換える<br>
-![図1](https://user-images.githubusercontent.com/64464106/107242927-dc028980-6a6f-11eb-937c-0073265c594b.png)
+2. 画像を粗くする<br>
+3. 輪郭抽出1<br>
+4. 輪郭抽出2<br>
+5. HSVをいじる<br>
+6. モノトーン+所定範囲の色相の色<br>
+7. 所定の範囲の色を画像に置き換える<br>
+8. 法線を取る<br>
+9. 深度を取る<br>
+![fig](https://user-images.githubusercontent.com/64464106/108764122-882a9100-7595-11eb-92f9-2ad597f5acf8.png)
