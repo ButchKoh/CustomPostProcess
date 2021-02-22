@@ -42,6 +42,15 @@ MonoBehaviour:
   _SlippingFrequency:
     overrideState: 0
     value: 30
+  _UVAnimX:
+    overrideState: 0
+    value: 0
+  _UVAnimY:
+    overrideState: 1
+    value: 1
+  _UVAnimSpeed:
+    overrideState: 1
+    value: 1
   _SlippingLevel:
     overrideState: 1
     value: 0.027
@@ -55,8 +64,8 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   _VerticalSlipping:
-    overrideState: 1
-    value: 0.17
+    overrideState: 0
+    value: 0
   _UVNoiseOn:
     overrideState: 0
     value: 1

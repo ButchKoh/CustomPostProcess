@@ -31,10 +31,10 @@
                     float2 uvRightDown = float2(uv.x + EdgeWidth, uv.y - EdgeWidth);
                     float2 uvLeftDown  = float2(uv.x - EdgeWidth, uv.y - EdgeWidth);
 
-                    uvRightUp   = repeat == 1 ? saturate(uvRightUp) : uvRightUp;
-                    uvLeftUp    = repeat == 1 ? saturate(uvLeftUp) : uvRightUp;
-                    uvRightDown = repeat == 1 ? saturate(uvRightDown) : uvRightUp;
-                    uvLeftDown  = repeat == 1 ? saturate(uvLeftDown) : uvRightUp;
+                    uvRightUp   = repeat == 1 ? frac(uvRightUp) : uvRightUp;
+                    uvLeftUp    = repeat == 1 ? frac(uvLeftUp) : uvRightUp;
+                    uvRightDown = repeat == 1 ? frac(uvRightDown) : uvRightUp;
+                    uvLeftDown  = repeat == 1 ? frac(uvLeftDown) : uvRightUp;
 
                     float4 colRightUp   = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uvRightUp);
                     float4 colLeftUp    = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uvLeftUp);
@@ -53,10 +53,10 @@
                         float2 uvUp     = float2(uv.x, uv.y + EdgeWidth);
                         float2 uvDown   = float2(uv.x, uv.y - EdgeWidth);
 
-                        uvRight = repeat == 1 ? saturate(uvRight): uvRight;
-                        uvLeft  = repeat == 1 ? saturate(uvLeft): uvLeft;
-                        uvUp    = repeat == 1 ? saturate(uvUp): uvUp;
-                        uvDown  = repeat == 1 ? saturate(uvDown): uvDown;
+                        uvRight = repeat == 1 ? frac(uvRight): uvRight;
+                        uvLeft  = repeat == 1 ? frac(uvLeft): uvLeft;
+                        uvUp    = repeat == 1 ? frac(uvUp): uvUp;
+                        uvDown  = repeat == 1 ? frac(uvDown): uvDown;
 
                         float4 colRight = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uvRight);
                         float4 colLeft  = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uvLeft);
@@ -73,7 +73,7 @@
                     else {
                         c_tmp = sqrt(dot(colRightUp - colLeftDown, colRightUp - colLeftDown) + dot(colLeftUp - colRightDown, colLeftUp - colRightDown));
                     }
-                    float4 c = 1 - step(c_tmp, (float4)_Threshold);
+                    float4 c = step((float4)_Threshold,c_tmp);
                     float4 color = abs(c);
 
                     color = (color.r+color.g+color.b != 0 & Monocolor == 1 ? MainColor : color);

@@ -15,6 +15,10 @@
 
             half _TimeScale;
 
+            float _UVAnimX;
+            float _UVAnimY;
+            float _UVAnimSpeed;
+
             int _UVHorizontalSlipOn;
             half _SlippingPosOffset;
             int _SlippingFrequency;
@@ -130,8 +134,10 @@
 
             half ScaledTime;
 
-            float4 frag(VaryingsDefault i) : SV_TARGET {
+            float4 frag(VaryingsDefault i) : SV_TARGET{
                 ScaledTime += _Time.y * _TimeScale;
+                float2 uv = frac(i.texcoord.xy + float2(_UVAnimX, _UVAnimY) * _UVAnimSpeed * ScaledTime);
+
                 half ScaledTimeFraction = frac(ScaledTime);
                 half TimeFraction = _Time.y;
 
@@ -147,7 +153,7 @@
                 PosterizedPair.y = posterized1;
                 half noise1 = SimpleNoise(PosterizedPair, _NoiseParam1);
                 noise1 = noise1 == 0 ? 1 : noise1;
-                half saturated = saturate(step(i.texcoord.y, noise1 * _NoiseIntensity + _SlippingWidth + _SlippingPosOffset) - step(i.texcoord.y, noise1 * _NoiseIntensity + _SlippingPosOffset));
+                half saturated = saturate(step(uv.y, noise1 * _NoiseIntensity + _SlippingWidth + _SlippingPosOffset) - step(uv.y, noise1 * _NoiseIntensity + _SlippingPosOffset));
                 half2 VerticalSlipped;
                 VerticalSlipped.x = saturated * _SlippingLevel * _UVHorizontalSlipOn;
                 VerticalSlipped.y = _VerticalSlipping;
@@ -155,7 +161,7 @@
                 //2-------------------------------------------------------------------------
 
                 half noise2 = SimpleNoise(TimeFractionPair, _NoiseFrequency);
-                half noise3 = (SimpleNoise(float2(i.texcoord.y, i.texcoord.y * noise2) * _NoiseDetail, 150) * 2) - 1;
+                half noise3 = (SimpleNoise(float2(uv.y, uv.y * noise2) * _NoiseDetail, 150) * 2) - 1;
                 half stepped3 = step(noise2, _NoiseThreshold);
                 half2 NoiseUV = half2(noise3 * stepped3 * _NoiseWidth * _UVNoiseOn, 0);
 
@@ -165,12 +171,12 @@
                 half posterizedNoise = floor(noise4 * _StretchLevel) / _StretchLevel;
                 half2 UVStretch = _StretchIntensity * posterizedNoise;
                 UVStretch *= step(posterizedNoise, _StretchThreshold);
-                UVStretch.x = (1.0 - abs(sign(_StretchOn - 1))) * i.texcoord.x * UVStretch.x;
+                UVStretch.x = (1.0 - abs(sign(_StretchOn - 1))) * uv.x * UVStretch.x;
                 UVStretch.y = 0;
 
                 //UV関係-------------------------------------------------------------
 
-                half2 UVsum1 = (i.texcoord + VerticalSlipped + NoiseUV + UVStretch);
+                half2 UVsum1 = (uv + VerticalSlipped + NoiseUV + UVStretch);
                 UVsum1.y=frac(UVsum1.y);
 
                 //4-------------------------------------------------------------------------
@@ -193,24 +199,24 @@
                 half noise6 = SimpleNoise(noise1 * 10, noise4);
                 half2 UVMosicLevel_tmp = half2(_MosicLevelX * noise1, _MosicLevelY * noise1);
                 half2 UVMosicLevel = round(UVMosicLevel_tmp);
-                half2 MosicUV = (floor(i.texcoord * UVMosicLevel.xy) / UVMosicLevel.xy);
+                half2 MosicUV = (floor(uv * UVMosicLevel.xy) / UVMosicLevel.xy);
                 int MosicThres = step(noise6, _MosicThreshold) * _MosicOn;
 
                 //6----------------------------------------------------------------------------------
 
-                half noise7 = SimpleNoise(i.texcoord, _SimpleNoiseScale);
+                half noise7 = SimpleNoise(uv, _SimpleNoiseScale);
                 half addSimpleNoise = frac(noise7 * 30 + ScaledTime * 3 * _SimpleNoiseOn) * _SimpleNoiseLevel;
                 float4 AddSimpleNoise = float4(addSimpleNoise, addSimpleNoise, addSimpleNoise, 1) / 2;
 
                 //7-------------------------------------------------------------------------
 
                 
-                half LineSequence = frac(_WaveSpeed * ScaledTime + i.texcoord.y * _LineWidth) * _LineIntensity * _WaveOn;
+                half LineSequence = frac(_WaveSpeed * ScaledTime + uv.y * _LineWidth) * _LineIntensity * _WaveOn;
                 LineSequence *= frac(LineSequence * LineSequence) * addSimpleNoise;
 
                 //8----------------------------------------------------------------------------------
 
-                half2 PixelizedUV = (round(i.texcoord.xy * _PixelNum.xx)  / _PixelNum.xx );
+                half2 PixelizedUV = (round(uv.xy * _PixelNum.xx)  / _PixelNum.xx );
                 PixelizedUV.y = frac(PixelizedUV.y);
                 half noise8 = SimpleNoise(ScaledTime, _NoiseParam7) * _SimpleNoiseOn;
                 float4 pxelizedColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, PixelizedUV);
@@ -221,11 +227,11 @@
                                     + SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, MosicUV).rgb * MosicThres;
                 float4 albedoColor = float4(albedoColorRGB, 1);
 
-                float4 PixelR = Rectangle(frac((i.texcoord - float2(0.333 / _PixelNum, 0)) * _PixelNum), _PixelSize * _PixelWidth / 3, _PixelSize)
+                float4 PixelR = Rectangle(frac((uv - float2(0.333 / _PixelNum, 0)) * _PixelNum), _PixelSize * _PixelWidth / 3, _PixelSize)
                     * float4(albedoColor.r, 0, 0, 1);
-                float4 PixelG = Rectangle(frac(i.texcoord * _PixelNum), _PixelSize * _PixelWidth / 3, _PixelSize)
+                float4 PixelG = Rectangle(frac(uv * _PixelNum), _PixelSize * _PixelWidth / 3, _PixelSize)
                     * float4(0, albedoColor.g, 0, 1);
-                float4 PixelB = Rectangle(frac((i.texcoord + float2(0.333 / _PixelNum, 0)) * _PixelNum), _PixelSize * _PixelWidth / 3, _PixelSize)
+                float4 PixelB = Rectangle(frac((uv + float2(0.333 / _PixelNum, 0)) * _PixelNum), _PixelSize * _PixelWidth / 3, _PixelSize)
                     * float4(0, 0, albedoColor.b, 1);
 
                 float4 RGBColor = (PixelR + PixelG + PixelB) * _PixelizeOn + (1 - _PixelizeOn) * albedoColor;

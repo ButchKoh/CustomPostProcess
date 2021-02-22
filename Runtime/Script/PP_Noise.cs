@@ -13,6 +13,10 @@ public sealed class PP_Noise : PostProcessEffectSettings
     public BoolParameter _UVHorizontalSlipOn = new BoolParameter { value = true };
     public FloatParameter _SlippingPosOffset = new FloatParameter { value = 0 };
     public IntParameter _SlippingFrequency = new IntParameter { value = 30 };
+    public FloatParameter _UVAnimX = new FloatParameter { value = 0 };
+    public FloatParameter _UVAnimY = new FloatParameter { value = 0 };
+    public FloatParameter _UVAnimSpeed = new FloatParameter { value = 0 };
+
     [Range(0, 2)]
     public FloatParameter _SlippingLevel = new FloatParameter { value = 0.05f };
     public FloatParameter _SlippingWidth = new FloatParameter { value = 0.25f };
@@ -79,6 +83,9 @@ public sealed class PP_NoiseRenderer : PostProcessEffectRenderer<PP_Noise>
     {
         var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffect/NoiseShader"));
         sheet.properties.SetFloat("_TimeScale", Mathf.Pow(settings._TimeScale / 10, 3) * 10);
+        sheet.properties.SetFloat("_UVAnimX", settings._UVAnimX);
+        sheet.properties.SetFloat("_UVAnimY", settings._UVAnimY);
+        sheet.properties.SetFloat("_UVAnimSpeed", settings._UVAnimSpeed);
 
         sheet.properties.SetInt("_UVHorizontalSlipOn", settings._UVHorizontalSlipOn == true ? 1 : 0);
         sheet.properties.SetFloat("_SlippingPosOffset", settings._SlippingPosOffset);

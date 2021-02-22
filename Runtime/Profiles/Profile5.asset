@@ -22,18 +22,6 @@ MonoBehaviour:
   tolerance1:
     overrideState: 1
     value: 0.08
-  col2:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
-  tolerance2:
-    overrideState: 1
-    value: 0
-  col3:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
-  tolerance3:
-    overrideState: 1
-    value: 0
   scaleX:
     overrideState: 0
     value: 1

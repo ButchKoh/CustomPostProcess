@@ -6,6 +6,9 @@ using UnityEditor.Rendering.PostProcessing;
 public class PP_NoiseEditor : PostProcessEffectEditor<PP_Noise>
 {
     SerializedParameterOverride _TimeScale;
+    SerializedParameterOverride _UVAnimX;
+    SerializedParameterOverride _UVAnimY;
+    SerializedParameterOverride _UVAnimSpeed;
 
     SerializedParameterOverride _UVHorizontalSlipOn;
     SerializedParameterOverride _SlippingPosOffset;
@@ -62,6 +65,10 @@ public class PP_NoiseEditor : PostProcessEffectEditor<PP_Noise>
     public override void OnEnable()
     {
         _TimeScale = FindParameterOverride(x => x._TimeScale);
+        _UVAnimX = FindParameterOverride(x => x._UVAnimX);
+        _UVAnimY = FindParameterOverride(x => x._UVAnimY);
+        _UVAnimSpeed = FindParameterOverride(x => x._UVAnimSpeed);
+
         _UVHorizontalSlipOn = FindParameterOverride(x => x._UVHorizontalSlipOn);
         _SlippingPosOffset = FindParameterOverride(x => x._SlippingPosOffset);
         _SlippingFrequency = FindParameterOverride(x => x._SlippingFrequency);
@@ -127,6 +134,9 @@ public class PP_NoiseEditor : PostProcessEffectEditor<PP_Noise>
             EditorStyles.label.fontStyle = FontStyle.Normal;
             PropertyField(_TimeScale);
             PropertyField(_VerticalSlipping);
+            PropertyField(_UVAnimX);
+            PropertyField(_UVAnimY);
+            PropertyField(_UVAnimSpeed);
         }
 
         EditorStyles.label.fontStyle = FontStyle.Normal;

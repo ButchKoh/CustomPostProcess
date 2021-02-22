@@ -10,12 +10,7 @@ public sealed class PP_ReplaceWithTexture : PostProcessEffectSettings
     public ColorParameter col1 = new ColorParameter { value = Color.white };
     [Range(0, 1)]
     public FloatParameter tolerance1 = new FloatParameter { value = 0.3f };
-    public ColorParameter col2 = new ColorParameter { value = Color.white };
-    [Range(0, 1)]
-    public FloatParameter tolerance2 = new FloatParameter { value = 0.3f }; 
-    public ColorParameter col3 = new ColorParameter { value = Color.white };
-    [Range(0, 1)]
-    public FloatParameter tolerance3 = new FloatParameter { value = 0.3f };
+
     public FloatParameter scaleX = new FloatParameter { value = 1 };
     public FloatParameter scaleY = new FloatParameter { value = 1 };
     public TextureParameter _Tex1 = new TextureParameter { value = null };
@@ -37,10 +32,7 @@ public sealed class PP_ReplaceWithTextureRenderer : PostProcessEffectRenderer<PP
         var sheet = context.propertySheets.Get(Shader.Find("Custom/PostEffect/ReplaceWithTexture"));
         sheet.properties.SetColor("col1", settings.col1);
         sheet.properties.SetFloat("tolerance1", Mathf.Pow(settings.tolerance1, 3) * 3);
-        sheet.properties.SetColor("col2", settings.col2);
-        sheet.properties.SetFloat("tolerance2", Mathf.Pow(settings.tolerance2, 3) * 3);
-        sheet.properties.SetColor("col3", settings.col3);
-        sheet.properties.SetFloat("tolerance3", Mathf.Pow(settings.tolerance3, 3) * 3);
+
         sheet.properties.SetFloat("scaleX", settings.scaleX);
         sheet.properties.SetFloat("scaleY", settings.scaleY);
         sheet.properties.SetTexture("_Tex1", settings._Tex1);

@@ -66,6 +66,9 @@ MonoBehaviour:
   enabled:
     overrideState: 1
     value: 1
+  DrawBGColor:
+    overrideState: 0
+    value: 0
   _EdgeSize:
     overrideState: 1
     value: 2
@@ -112,6 +115,15 @@ MonoBehaviour:
   _SlippingFrequency:
     overrideState: 0
     value: 30
+  _UVAnimX:
+    overrideState: 1
+    value: 0
+  _UVAnimY:
+    overrideState: 1
+    value: 0
+  _UVAnimSpeed:
+    overrideState: 1
+    value: 1
   _SlippingLevel:
     overrideState: 0
     value: 0.05
